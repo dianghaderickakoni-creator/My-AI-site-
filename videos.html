@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Videos — Aivo</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="site-nav wrap">
+  <a class="brand" href="index.html">Aivo</a>
+  <div class="nav-links">
+    <a href="videos.html">Videos</a>
+    <a href="images.html">Images</a>
+    <a href="lessons.html">Lessons</a>
+  </div>
+</nav>
+
+<div class="page-header wrap">
+  <h1>Videos</h1>
+  <p>Short films, kids' stories, and a podcast — all made with AI. New ones posted regularly.</p>
+</div>
+
+<section class="band band-dark" style="padding-top:0;">
+  <div class="wrap">
+    <div class="filmstrip" id="video-strip" style="flex-wrap:wrap; overflow:visible;"></div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div>© 2026 Aivo</div>
+  <div><a href="index.html">Back to home</a></div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+  const strip = document.getElementById('video-strip');
+  SITE_DATA.videos.forEach(v => {
+    strip.innerHTML += `
+      <div class="film-card">
+        <div class="film-thumb"></div>
+        <div class="film-body">
+          <span class="film-tag">${v.tag}</span>
+          <h3>${v.title}</h3>
+          <p>${v.description}</p>
+        </div>
+      </div>`;
+  });
+</script>
+
+</body>
+</html>

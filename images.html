@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Images — Aivo</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="site-nav wrap">
+  <a class="brand" href="index.html">Aivo</a>
+  <div class="nav-links">
+    <a href="videos.html">Videos</a>
+    <a href="images.html">Images</a>
+    <a href="lessons.html">Lessons</a>
+  </div>
+</nav>
+
+<div class="page-header wrap">
+  <h1>Images</h1>
+  <p>Photoreal shots, product scenes, portraits, and brand work — no camera involved.</p>
+</div>
+
+<div class="contact-sheet" id="image-sheet"></div>
+
+<footer class="wrap">
+  <div>© 2026 Aivo</div>
+  <div><a href="index.html">Back to home</a></div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+  const sheet = document.getElementById('image-sheet');
+  SITE_DATA.images.forEach(img => {
+    sheet.innerHTML += `
+      <div class="sheet-item">
+        <img src="${img.imageUrl}" alt="${img.title}">
+        <div class="sheet-caption">
+          <span class="tag">${img.tag}</span>
+          <h3>${img.title}</h3>
+        </div>
+      </div>`;
+  });
+</script>
+
+</body>
+</html>

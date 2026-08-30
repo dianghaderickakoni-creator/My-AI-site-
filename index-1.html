@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aivo — Learn AI, and see what it can make</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="site-nav wrap">
+  <a class="brand" href="index.html">Aivo</a>
+  <div class="nav-links">
+    <a href="videos.html">Videos</a>
+    <a href="images.html">Images</a>
+    <a href="lessons.html">Lessons</a>
+  </div>
+</nav>
+
+<section class="hero wrap">
+  <div>
+    <h1>Learn what AI can do, by watching it work.</h1>
+    <p>Lessons that take you from curious to capable, plus a running showcase of what AI can actually make — videos, images, and everything in between.</p>
+    <div class="hero-actions">
+      <a class="btn btn-fill" href="lessons.html">Start learning</a>
+      <a class="btn btn-outline" href="videos.html">See the showcase</a>
+    </div>
+  </div>
+  <div class="hero-frames">
+    <div class="frame frame-1"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700" alt=""></div>
+    <div class="frame frame-2"><img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=700" alt=""></div>
+  </div>
+</section>
+
+<section class="band band-dark">
+  <div class="wrap">
+    <div class="band-head">
+      <div>
+        <h2>Videos</h2>
+        <p class="band-desc">Short films, kids' stories, and a podcast — all made with AI.</p>
+      </div>
+      <a class="view-all" href="videos.html">View all</a>
+    </div>
+    <div class="filmstrip" id="video-strip"></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <div>
+        <h2>Images</h2>
+        <p class="band-desc">Photoreal shots, product scenes, and portraits — no camera involved.</p>
+      </div>
+      <a class="view-all" href="images.html">View all</a>
+    </div>
+  </div>
+  <div class="contact-sheet" id="image-sheet"></div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <div>
+        <h2>Lessons</h2>
+        <p class="band-desc">Practical, short, and building toward a certificate.</p>
+      </div>
+      <a class="view-all" href="lessons.html">View all</a>
+    </div>
+    <div class="lesson-list" id="lesson-list"></div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div>© 2026 Aivo</div>
+  <div>Made with AI, taught by a person</div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+  const strip = document.getElementById('video-strip');
+  SITE_DATA.videos.forEach(v => {
+    strip.innerHTML += `
+      <div class="film-card">
+        <div class="film-thumb"></div>
+        <div class="film-body">
+          <span class="film-tag">${v.tag}</span>
+          <h3>${v.title}</h3>
+          <p>${v.description}</p>
+        </div>
+      </div>`;
+  });
+
+  const sheet = document.getElementById('image-sheet');
+  SITE_DATA.images.forEach(img => {
+    sheet.innerHTML += `
+      <div class="sheet-item">
+        <img src="${img.imageUrl}" alt="${img.title}">
+        <div class="sheet-caption">
+          <span class="tag">${img.tag}</span>
+          <h3>${img.title}</h3>
+        </div>
+      </div>`;
+  });
+
+  const list = document.getElementById('lesson-list');
+  SITE_DATA.lessons.forEach((l, i) => {
+    list.innerHTML += `
+      <div class="lesson-row">
+        <div class="lesson-left">
+          <span class="lesson-num">${String(i+1).padStart(2,'0')}</span>
+          <div>
+            <h3>${l.title}</h3>
+            <p>${l.description}</p>
+          </div>
+        </div>
+        <div class="lesson-meta">${l.duration} · ${l.level === 'Premium' ? '<span class="badge-premium">Premium</span>' : l.level}</div>
+      </div>`;
+  });
+</script>
+
+</body>
+</html>

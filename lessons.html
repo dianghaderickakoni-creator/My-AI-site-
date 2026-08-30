@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lessons — Aivo</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="site-nav wrap">
+  <a class="brand" href="index.html">Aivo</a>
+  <div class="nav-links">
+    <a href="videos.html">Videos</a>
+    <a href="images.html">Images</a>
+    <a href="lessons.html">Lessons</a>
+  </div>
+</nav>
+
+<div class="page-header wrap">
+  <h1>Lessons</h1>
+  <p>Practical and short. Finish the full path and earn a certificate.</p>
+</div>
+
+<section class="wrap" style="padding-bottom:70px;">
+  <div class="lesson-list" id="lesson-list"></div>
+
+  <div class="cert-strip">
+    <div>
+      <h4>Certificate on completion</h4>
+      <p>Finish every lesson in this path and we'll generate a certificate with your name on it.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div>© 2026 Aivo</div>
+  <div><a href="index.html">Back to home</a></div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+  const list = document.getElementById('lesson-list');
+  SITE_DATA.lessons.forEach((l, i) => {
+    list.innerHTML += `
+      <div class="lesson-row">
+        <div class="lesson-left">
+          <span class="lesson-num">${String(i+1).padStart(2,'0')}</span>
+          <div>
+            <h3>${l.title}</h3>
+            <p>${l.description}</p>
+          </div>
+        </div>
+        <div class="lesson-meta">${l.duration} · ${l.level === 'Premium' ? '<span class="badge-premium">Premium</span>' : l.level}</div>
+      </div>`;
+  });
+</script>
+
+</body>
+</html>
